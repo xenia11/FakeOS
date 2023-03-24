@@ -10,6 +10,9 @@ Icons for applications and files
 A menu bar or start menu
 A clock or system tray
 
+
+
+
 Functionality
 
 
