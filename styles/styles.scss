@@ -67,8 +67,6 @@ body {
 .screen {
     height: 76vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     margin-left: 10px;
     margin-right: 10px;
 
@@ -80,7 +78,8 @@ body {
         width: 100%;
 
         &__weather {
-            height: 90px;
+            height: 116px;
+            width: 116px;
         }
         &__degrees {
             font-size: 40px;
@@ -88,21 +87,44 @@ body {
         }
     }
 
-    .icon-container {
+    .mid-screen {
         display: grid;
-        justify-content: center;
-        height: 16%;
-
-        align-content: space-evenly;
-
-        &__icon {
-            height: 45px;
-            width: 45px;
-        }
-
-        &__text {
-            color: white;
-            margin-top: 7%;
-        }
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        align-items: center;
     }
+    .lower-screen {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+.icon-container {
+    display: grid;
+    justify-content: center;
+
+    align-content: space-evenly;
+
+    &__icon {
+        height: 45px;
+        width: 45px;
+    }
+
+    &__text {
+        color: white;
+        margin-top: 7%;
+    }
+}
+
+.module-container {
+    background-color: white;
+    height: 100px;
+    width: 100px;
+}
+
+.menu-container {
+    background-color: white;
+    height: 150px;
+    width: 150px;
 }

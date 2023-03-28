@@ -64,8 +64,6 @@ body {
 .screen {
   height: 76vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -77,23 +75,47 @@ body {
   width: 100%;
 }
 .screen .upper-screen__weather {
-  height: 90px;
+  height: 116px;
+  width: 116px;
 }
 .screen .upper-screen__degrees {
   font-size: 40px;
   color: white;
 }
-.screen .icon-container {
+.screen .mid-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+}
+.screen .lower-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.icon-container {
   display: grid;
   justify-content: center;
-  height: 16%;
   align-content: space-evenly;
 }
-.screen .icon-container__icon {
+.icon-container__icon {
   height: 45px;
   width: 45px;
 }
-.screen .icon-container__text {
+.icon-container__text {
   color: white;
   margin-top: 7%;
+}
+
+.module-container {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+}
+
+.menu-container {
+  background-color: white;
+  height: 150px;
+  width: 150px;
 }

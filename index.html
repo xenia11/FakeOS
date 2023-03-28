@@ -5,13 +5,35 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./styles/styles.css" />
+        <link
+            href="https://fonts.cdnfonts.com/css/samsungone"
+            rel="stylesheet"
+        />
+
         <title>Fake OS</title>
     </head>
     <body>
         <div class="phone-container">
             <div class="phone-frame">
                 <header class="top-bar">
+                    <p id="time" class="time"></p>
                     <div class="camera"></div>
+                    <img
+                        class="icon-container icon-container__icon"
+                        src="./images/wifi.png"
+                        alt="wifi"
+                    />
+                    <img
+                        class="icon-container icon-container__icon"
+                        src="./images/network-signal.png"
+                        alt="network-signal"
+                    />
+                    <p>23%</p>
+                    <img
+                        class="icon-container icon-container__icon"
+                        src="./images/battery.png"
+                        alt="battery"
+                    />
                 </header>
                 <div class="screen">
                     <div class="upper-screen">
@@ -24,16 +46,6 @@
                     </div>
                     <div class="mid-screen"></div>
                     <div class="lower-screen"></div>
-                    <!-- <div class="icon-container">
-                        <img
-                            class="icon-container icon-container__icon"
-                            src="./images/chrome.png"
-                            alt="chrome"
-                        />
-                        <p class="icon-container icon-container__text">
-                            Chrome
-                        </p>
-                    </div> -->
                 </div>
 
                 <footer class="button-bar">
