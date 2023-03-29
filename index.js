@@ -43,14 +43,20 @@ const lowerScreen = document.querySelector(".lower-screen");
 
 const mainIcons = lowerScreenApps.map((icon) => {
     const divElement = document.createElement("div");
-    divElement.className = "icon-container";
-    divElement.onclick = `createFakeModule(${icon.title})`;
     divElement.setAttribute("data-icon", `${icon.title}`);
+    divElement.className = icon.title === "Menu" ? "menu" : "icon-container";
+    divElement.onclick =
+        icon.title === "Menu"
+            ? "openMenu()"
+            : `createFakeModule(${icon.title})`;
 
     const imageElement = document.createElement("img");
     imageElement.src = `${icon.image}`;
     imageElement.alt = `${icon.title}`;
-    imageElement.className = "icon-container icon-container__icon";
+    imageElement.className =
+        icon.title === "Menu"
+            ? "menu menu__icon"
+            : "icon-container icon-container__icon";
 
     divElement.appendChild(imageElement);
 
@@ -72,10 +78,43 @@ const currentTime = () => {
 
     let time = h + ":" + m;
     document.getElementById("time").innerHTML = time;
+    setTimeout(currentTime, 100);
 };
 currentTime();
 
+const homeBtnContainer = document.getElementsByClassName("button-bar")[0];
+console.log(homeBtnContainer);
+const homeBtn = document.getElementById("homeBtn");
+console.log(homeBtn);
+
+function createFakeModule(icon) {
+    const moduleContainer = document.createElement("div");
+    const moduleHeader = document.createElement("h2");
+    const moduleText = document.createElement("p");
+    const moduleCloseBtn = document.createElement("button");
+
+    moduleContainer.className = "module-container";
+    moduleHeader.textContent = icon;
+    moduleText.textContent = `You've just opened ${icon}`;
+    moduleCloseBtn.textContent = "Close";
+    homeBtnContainer.classList.add("button-bar--wht-background");
+    homeBtn.classList.add("home-button--black-border");
+
+    moduleCloseBtn.addEventListener("click", () => {
+        moduleContainer.remove();
+        homeBtnContainer.classList.remove("button-bar--wht-background");
+        homeBtn.classList.remove("home-button--black-border");
+    });
+
+    moduleContainer.appendChild(moduleHeader);
+    moduleContainer.appendChild(moduleText);
+    moduleContainer.appendChild(moduleCloseBtn);
+
+    document.querySelector(".phone-frame").appendChild(moduleContainer);
+}
+
 // open app when clicked
+
 const iconContainers = document.querySelectorAll(".icon-container");
 
 iconContainers.forEach((icon) => {
@@ -86,31 +125,33 @@ iconContainers.forEach((icon) => {
     });
 });
 
-function createFakeModule(icon) {
-    if (icon == "Menu") return openMenu();
-    const moduleContainer = document.createElement("div");
-    const moduleHeader = document.createElement("h2");
-    const moduleText = document.createElement("p");
-    const moduleCloseBtn = document.createElement("button");
-
-    moduleContainer.className = "module-container";
-    moduleHeader.textContent = icon.title;
-    moduleText.textContent = `You've just opened ${icon}`;
-    moduleCloseBtn.textContent = "Close";
-
-    moduleCloseBtn.addEventListener("click", () => {
-        moduleContainer.remove();
-    });
-
-    moduleContainer.appendChild(moduleHeader);
-    moduleContainer.appendChild(moduleText);
-    moduleContainer.appendChild(moduleCloseBtn);
-
-    document.querySelector(".screen").appendChild(moduleContainer);
-}
+//opens menu icon with all the apps
 
 const openMenu = () => {
     const menu = document.createElement("div");
     menu.className = "menu-container";
-    document.getElementById("time").appendChild(menu);
+    const menuHeader = document.createElement("h1");
+    menuHeader.textContent = "Menu";
+
+    menu.appendChild(menuHeader);
+    menu.append(...mainIcons);
+    document.querySelector(".phone-frame").appendChild(menu);
 };
+
+document.querySelector(".menu").addEventListener("click", openMenu);
+menu.append(...mainIcons);
+
+//home button func that closes the opened fake module
+
+const closeAllModules = () => {
+    const openModules = document.querySelectorAll(".module-container");
+    openModules.forEach((module) => {
+        const parent = document.querySelector(".phone-frame");
+        parent.removeChild(module);
+        homeBtnContainer.classList.remove("button-bar--wht-background");
+        homeBtn.classList.remove("home-button--black-border");
+    });
+};
+
+const closeButton = document.getElementById("homeBtn");
+closeButton.addEventListener("click", closeAllModules);
