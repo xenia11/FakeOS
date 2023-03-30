@@ -130,16 +130,22 @@ iconContainers.forEach((icon) => {
 const openMenu = () => {
     const menu = document.createElement("div");
     menu.className = "menu-container";
+    menu.classList.add("add-blur");
     const menuHeader = document.createElement("h1");
     menuHeader.textContent = "Menu";
 
     menu.appendChild(menuHeader);
-    menu.append(...mainIcons);
+    menu.append(...iconsElement);
     document.querySelector(".phone-frame").appendChild(menu);
+    document.querySelector(".upper-screen").style.display = "none";
+    document.querySelector(".mid-screen").style.display = "none";
+    document.querySelector(".lower-screen").style.display = "none";
+    document.getElementById("sc1").classList.add("add-blur"); //TODO onMenu click - unset blur
 };
 
 document.querySelector(".menu").addEventListener("click", openMenu);
-menu.append(...mainIcons);
+
+//menu.append(...mainIcons);
 
 //home button func that closes the opened fake module
 

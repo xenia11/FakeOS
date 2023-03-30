@@ -14,28 +14,32 @@
     </head>
     <body>
         <div class="phone-container">
-            <div class="phone-frame">
+            <div class="phone-frame" id="'phone-frame">
                 <header class="top-bar">
-                    <p id="time" class="time"></p>
-                    <div class="camera"></div>
+                    <p id="time" class="top-bar time"></p>
+                    <div class="top-bar camera"></div>
                     <img
-                        class="icon-container icon-container__icon"
+                        class="icon-container icon-container__icon icon-container__icon--smaller"
                         src="./images/wifi.png"
                         alt="wifi"
                     />
                     <img
-                        class="icon-container icon-container__icon"
+                        class="icon-container icon-container__icon icon-container__icon--smallest"
                         src="./images/network-signal.png"
                         alt="network-signal"
                     />
-                    <p>23%</p>
+                    <p
+                        class="icon-container icon-container__icon icon-container__icon--small"
+                    >
+                        23%
+                    </p>
                     <img
-                        class="icon-container icon-container__icon"
+                        class="icon-container icon-container__icon icon-container__icon--small"
                         src="./images/battery.png"
                         alt="battery"
                     />
                 </header>
-                <div class="screen">
+                <div class="screen" id="sc1">
                     <div class="upper-screen">
                         <img
                             src="./images/daytime.png"
