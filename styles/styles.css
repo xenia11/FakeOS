@@ -30,7 +30,9 @@ body {
 .icon-container {
   display: grid;
   justify-content: center;
+  filter: none;
   align-content: space-evenly;
+  cursor: pointer;
 }
 .icon-container__icon {
   height: 45px;
@@ -40,17 +42,21 @@ body {
   height: 22px;
   width: 28px;
   font-size: 18px;
-  margin-top: 0;
+  margin-top: 0.8%;
 }
 .icon-container__icon--smaller {
   height: 21px;
   width: 21px;
   margin-top: 0.5%;
+  cursor: none;
 }
 .icon-container__icon--smallest {
   height: 16px;
   width: 16px;
   margin-top: 1.5%;
+  cursor: none;
+  margin-left: 3px;
+  margin-right: 10px;
 }
 .icon-container__text {
   color: white;
@@ -76,6 +82,7 @@ body {
   position: absolute;
   left: 47%;
   top: 5%;
+  cursor: none;
 }
 .top-bar .time {
   order: 1;
@@ -84,6 +91,7 @@ body {
   top: 3%;
   height: 22px;
   width: 28px;
+  cursor: none;
 }
 
 .button-bar {
@@ -123,6 +131,8 @@ body {
   align-items: center;
   height: 86px;
   width: 100%;
+  cursor: none;
+  filter: blur(0) !important;
 }
 .screen .upper-screen__weather {
   height: 116px;
@@ -178,27 +188,13 @@ body {
 }
 
 .menu-container {
-  z-index: 9;
-  display: flex;
+  z-index: 99;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 23px;
+  top: 55px;
   left: 23px;
   right: 21px;
-  bottom: 26px;
+  bottom: 90px;
   padding-bottom: 8.5vh;
-  color: transparent;
-  background-image: url("./../images/background-photo.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.add-blur {
-  filter: blur(7px);
-}
-
-.remove-blur {
-  filter: none;
 }

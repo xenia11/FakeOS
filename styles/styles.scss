@@ -32,8 +32,10 @@ body {
 .icon-container {
     display: grid;
     justify-content: center;
+    filter: none;
 
     align-content: space-evenly;
+    cursor: pointer;
 
     &__icon {
         height: 45px;
@@ -43,17 +45,21 @@ body {
             height: 22px;
             width: 28px;
             font-size: 18px;
-            margin-top: 0;
+            margin-top: 0.8%;
         }
         &--smaller {
             height: 21px;
             width: 21px;
             margin-top: 0.5%;
+            cursor: none;
         }
         &--smallest {
             height: 16px;
             width: 16px;
             margin-top: 1.5%;
+            cursor: none;
+            margin-left: 3px;
+            margin-right: 10px;
         }
     }
 
@@ -82,6 +88,7 @@ body {
         position: absolute;
         left: 47%;
         top: 5%;
+        cursor: none;
     }
     .time {
         order: 1;
@@ -90,6 +97,7 @@ body {
         top: 3%;
         height: 22px;
         width: 28px;
+        cursor: none;
     }
 }
 
@@ -133,7 +141,8 @@ body {
         align-items: center;
         height: 86px;
         width: 100%;
-
+        cursor: none;
+        filter: blur(0) !important;
         &__weather {
             height: 116px;
             width: 116px;
@@ -195,30 +204,20 @@ body {
 }
 
 .menu-container {
-    z-index: 9;
-    // background: #009938;
-
-    display: flex;
+    z-index: 99;
+    //   cursor: pointer;
+    //   display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 23px;
+    top: 55px;
     left: 23px;
     right: 21px;
-    bottom: 26px;
-    // background-color: white;
+    bottom: 90px;
     padding-bottom: 8.5vh;
-    color: transparent;
-    background-image: url("./../images/background-photo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-.add-blur {
-    filter: blur(7px);
-}
-
-.remove-blur {
-    filter: none;
+    //  color: transparent;
+    // background-image: url("./../images/background-photo.jpg");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center center;
 }

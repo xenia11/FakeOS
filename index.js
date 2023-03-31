@@ -19,7 +19,7 @@ const midScreen = document.querySelector(".mid-screen");
 const iconsElement = midScreenApps.map((icon) => {
     const divElement = document.createElement("div");
     divElement.className = "icon-container";
-    divElement.onclick = `createFakeModule()`;
+    //divElement.onclick = `createFakeModule()`;
     divElement.setAttribute("data-icon", `${icon.title}`);
 
     const imageElement = document.createElement("img");
@@ -45,10 +45,13 @@ const mainIcons = lowerScreenApps.map((icon) => {
     const divElement = document.createElement("div");
     divElement.setAttribute("data-icon", `${icon.title}`);
     divElement.className = icon.title === "Menu" ? "menu" : "icon-container";
-    divElement.onclick =
-        icon.title === "Menu"
-            ? "openMenu()"
-            : `createFakeModule(${icon.title})`;
+
+    // divElement.onclick = "openMenu()";
+
+    // divElement.onclick =
+    //     icon.title === "Menu"
+    //         ? "openMenu()"
+    //         : `createFakeModule(${icon.title})`;
 
     const imageElement = document.createElement("img");
     imageElement.src = `${icon.image}`;
@@ -64,23 +67,6 @@ const mainIcons = lowerScreenApps.map((icon) => {
 });
 
 lowerScreen.append(...mainIcons);
-
-const currentTime = () => {
-    function addZero(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-    const d = new Date();
-    let h = addZero(d.getHours());
-    let m = addZero(d.getMinutes());
-
-    let time = h + ":" + m;
-    document.getElementById("time").innerHTML = time;
-    setTimeout(currentTime, 100);
-};
-currentTime();
 
 const homeBtnContainer = document.getElementsByClassName("button-bar")[0];
 console.log(homeBtnContainer);
@@ -115,49 +101,106 @@ function createFakeModule(icon) {
 
 // open app when clicked
 
-const iconContainers = document.querySelectorAll(".icon-container");
+const iconContainers = document.querySelectorAll(".icon-container:not(.skip)");
+const test = document.querySelector('[data-icon="Gmail"]');
+const ic = document.querySelectorAll("[data-icon]");
+console.log(ic.length);
 
-iconContainers.forEach((icon) => {
-    icon.addEventListener("click", () => {
-        const iconData = icon.dataset.icon;
-        console.log(iconData);
-        createFakeModule(iconData);
+for (let i = 0; i < ic.length; i++) {
+    console.log(ic[i]);
+    ic[i].addEventListener("click", () => {
+        createFakeModule(ic[i].textContent);
     });
-});
+}
+
+// test.addEventListener("click", () => {
+//     createFakeModule(test.textContent);
+// });
+
+// iconContainers.forEach((icon) => {
+//     if (icon === undefined) {
+//         return "";
+//     }
+//     icon.addEventListener("click", () => {
+//         const iconData = icon.dataset.icon;
+//         console.log(iconData);
+//         createFakeModule(iconData);
+//     });
+// });
 
 //opens menu icon with all the apps
 
 const openMenu = () => {
+    const parent = document.querySelector(".phone-frame");
+    parent.style.backgroundImage = "url(./images/background-photo-blurred.jpg)";
+
     const menu = document.createElement("div");
     menu.className = "menu-container";
-    menu.classList.add("add-blur");
+    menu.id = "menu-container";
+    //  menu.classList.add("add-blur");
     const menuHeader = document.createElement("h1");
     menuHeader.textContent = "Menu";
-
     menu.appendChild(menuHeader);
     menu.append(...iconsElement);
-    document.querySelector(".phone-frame").appendChild(menu);
+
+    parent.appendChild(menu);
     document.querySelector(".upper-screen").style.display = "none";
     document.querySelector(".mid-screen").style.display = "none";
     document.querySelector(".lower-screen").style.display = "none";
-    document.getElementById("sc1").classList.add("add-blur"); //TODO onMenu click - unset blur
+    //  document.getElementById("sc1").classList.add("add-blur"); //TODO onMenu click - unset blur
 };
 
-document.querySelector(".menu").addEventListener("click", openMenu);
+document.querySelector(".menu").addEventListener("click", () => {
+    openMenu();
+});
 
-//menu.append(...mainIcons);
+const closeMenu = () => {
+    const parent = document.querySelector(".phone-frame");
+    const menu = document.querySelector("#menu-container");
+    parent.removeChild(menu);
+    midScreen.append(...iconsElement);
+    document.querySelector(".mid-screen").style.display = "grid";
+    document.querySelector(".upper-screen").style.display = "flex";
+    document.querySelector(".lower-screen").style.display = "grid";
+    parent.style.backgroundImage = "url(./images/background-photo.jpg)";
+};
 
 //home button func that closes the opened fake module
 
 const closeAllModules = () => {
+    const parent = document.querySelector(".phone-frame");
+    const menu = document.querySelector("#menu-container");
+
+    if (menu) {
+        closeMenu();
+    }
+
     const openModules = document.querySelectorAll(".module-container");
     openModules.forEach((module) => {
-        const parent = document.querySelector(".phone-frame");
         parent.removeChild(module);
         homeBtnContainer.classList.remove("button-bar--wht-background");
         homeBtn.classList.remove("home-button--black-border");
     });
 };
 
+const currentTime = () => {
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    const d = new Date();
+    let h = addZero(d.getHours());
+    let m = addZero(d.getMinutes());
+
+    let time = h + ":" + m;
+    document.getElementById("time").innerHTML = time;
+    setTimeout(currentTime, 100);
+};
+currentTime();
+
 const closeButton = document.getElementById("homeBtn");
 closeButton.addEventListener("click", closeAllModules);
+
+//make sure to find text contect for main icons
