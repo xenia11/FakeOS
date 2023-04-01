@@ -1,16 +1,52 @@
 const midScreenApps = [
-    { image: "./images/gmail.png", title: "Gmail" },
-    { image: "./images/googledrive.png", title: "Drive" },
-    { image: "./images/linkedin.png", title: "LinkedIn" },
-    { image: "./images/youtube.png", title: "YouTube" },
-    { image: "./images/slack.png", title: "Slack" },
+    {
+        image: "./images/gmail.png",
+        title: "Gmail",
+        background: "./images/gmail-background.jpg",
+    },
+    {
+        image: "./images/googledrive.png",
+        title: "Drive",
+        background: "./images/drive-background.jpg",
+    },
+    {
+        image: "./images/linkedin.png",
+        title: "LinkedIn",
+        background: "./images/linedin-background.jpg",
+    },
+    {
+        image: "./images/youtube.png",
+        title: "YouTube",
+        background: "./images/youtube-background.jpg",
+    },
+    {
+        image: "./images/slack.png",
+        title: "Slack",
+        background: "./images/slack-background.jpg",
+    },
 ];
 
 const lowerScreenApps = [
-    { image: "./images/phone.png", title: "Phone" },
-    { image: "./images/chrome.png", title: "Chrome" },
-    { image: "./images/sms1.png", title: "Sms" },
-    { image: "./images/gallery.png", title: "Gallery" },
+    {
+        image: "./images/phone.png",
+        title: "Phone",
+        background: "./images/pintrest-background.jpg",
+    },
+    {
+        image: "./images/chrome.png",
+        title: "Chrome",
+        background: "./images/chrome-background.jpg",
+    },
+    {
+        image: "./images/sms1.png",
+        title: "Sms",
+        background: "./images/sms-background.jpg",
+    },
+    {
+        image: "./images/gallery.png",
+        title: "Gallery",
+        background: "./images/gallery-background.jpg",
+    },
     { image: "./images/menu.png", title: "Menu" },
 ];
 
@@ -19,7 +55,6 @@ const midScreen = document.querySelector(".mid-screen");
 const iconsElement = midScreenApps.map((icon) => {
     const divElement = document.createElement("div");
     divElement.className = "icon-container";
-    //divElement.onclick = `createFakeModule()`;
     divElement.setAttribute("data-icon", `${icon.title}`);
 
     const imageElement = document.createElement("img");
@@ -44,7 +79,8 @@ const lowerScreen = document.querySelector(".lower-screen");
 const mainIcons = lowerScreenApps.map((icon) => {
     const divElement = document.createElement("div");
     divElement.setAttribute("data-icon", `${icon.title}`);
-    divElement.className = icon.title === "Menu" ? "menu" : "icon-container";
+    divElement.className =
+        icon.title === "Menu" ? "menu skip" : "icon-container";
 
     // divElement.onclick = "openMenu()";
 
@@ -58,7 +94,7 @@ const mainIcons = lowerScreenApps.map((icon) => {
     imageElement.alt = `${icon.title}`;
     imageElement.className =
         icon.title === "Menu"
-            ? "menu menu__icon"
+            ? "menu menu__icon skip"
             : "icon-container icon-container__icon";
 
     divElement.appendChild(imageElement);
@@ -75,41 +111,43 @@ console.log(homeBtn);
 
 function createFakeModule(icon) {
     const moduleContainer = document.createElement("div");
-    const moduleHeader = document.createElement("h2");
-    const moduleText = document.createElement("p");
-    const moduleCloseBtn = document.createElement("button");
+    const childOne = document.createElement("div");
+    const childTwo = document.createElement("div");
+    const childOneImg = document.createElement("img");
+    childOne.className = "module-container__divOne";
+    childOneImg.className = "module-container__divOne--img";
+    childOneImg.src = "./images/close.png";
+    childTwo.className = "module-container__divTwo";
+    childTwo.style.backgroundImage = `url(${icon.background})`;
 
     moduleContainer.className = "module-container";
-    moduleHeader.textContent = icon;
-    moduleText.textContent = `You've just opened ${icon}`;
-    moduleCloseBtn.textContent = "Close";
+
     homeBtnContainer.classList.add("button-bar--wht-background");
     homeBtn.classList.add("home-button--black-border");
 
-    moduleCloseBtn.addEventListener("click", () => {
+    childOne.addEventListener("click", () => {
         moduleContainer.remove();
         homeBtnContainer.classList.remove("button-bar--wht-background");
         homeBtn.classList.remove("home-button--black-border");
     });
 
-    moduleContainer.appendChild(moduleHeader);
-    moduleContainer.appendChild(moduleText);
-    moduleContainer.appendChild(moduleCloseBtn);
+    childOne.appendChild(childOneImg);
+
+    moduleContainer.appendChild(childOne);
+    moduleContainer.appendChild(childTwo);
 
     document.querySelector(".phone-frame").appendChild(moduleContainer);
 }
 
 // open app when clicked
 
-const iconContainers = document.querySelectorAll(".icon-container:not(.skip)");
-const test = document.querySelector('[data-icon="Gmail"]');
-const ic = document.querySelectorAll("[data-icon]");
-console.log(ic.length);
+const iconContainers = document.querySelectorAll("[data-icon]:not(.skip)");
+console.log(document.querySelectorAll("[data-icon][dataset]"));
 
-for (let i = 0; i < ic.length; i++) {
-    console.log(ic[i]);
-    ic[i].addEventListener("click", () => {
-        createFakeModule(ic[i].textContent);
+for (let i = 0; i < iconContainers.length; i++) {
+    console.log(iconContainers[i]);
+    iconContainers[i].addEventListener("click", () => {
+        createFakeModule(iconContainers[i].dataset.icon);
     });
 }
 
@@ -137,10 +175,7 @@ const openMenu = () => {
     const menu = document.createElement("div");
     menu.className = "menu-container";
     menu.id = "menu-container";
-    //  menu.classList.add("add-blur");
-    const menuHeader = document.createElement("h1");
-    menuHeader.textContent = "Menu";
-    menu.appendChild(menuHeader);
+
     menu.append(...iconsElement);
 
     parent.appendChild(menu);
@@ -193,10 +228,10 @@ const currentTime = () => {
     const d = new Date();
     let h = addZero(d.getHours());
     let m = addZero(d.getMinutes());
-
     let time = h + ":" + m;
     document.getElementById("time").innerHTML = time;
     setTimeout(currentTime, 100);
+    return h;
 };
 currentTime();
 
@@ -204,3 +239,13 @@ const closeButton = document.getElementById("homeBtn");
 closeButton.addEventListener("click", closeAllModules);
 
 //make sure to find text contect for main icons
+const dayOrNight = (hours) => {
+    const currentHour = currentTime();
+    const dayNightImg = document.querySelector(".upper-screen__weather");
+
+    currentHour > 20 && currentHour < 05
+        ? (dayNightImg.src = "./images/nighttime.png")
+        : (dayNightImg.src = "./images/daytime.png");
+};
+
+dayOrNight();
