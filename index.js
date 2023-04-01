@@ -30,7 +30,7 @@ const lowerScreenApps = [
     {
         image: "./images/phone.png",
         title: "Phone",
-        background: "./images/pintrest-background.jpg",
+        background: "./images/phone-background.jpg",
     },
     {
         image: "./images/chrome.png",
@@ -55,7 +55,7 @@ const midScreen = document.querySelector(".mid-screen");
 const iconsElement = midScreenApps.map((icon) => {
     const divElement = document.createElement("div");
     divElement.className = "icon-container";
-    divElement.setAttribute("data-icon", `${icon.title}`);
+    divElement.setAttribute("data-icon", `${icon.background}`);
 
     const imageElement = document.createElement("img");
     imageElement.src = `${icon.image}`;
@@ -78,7 +78,7 @@ const lowerScreen = document.querySelector(".lower-screen");
 
 const mainIcons = lowerScreenApps.map((icon) => {
     const divElement = document.createElement("div");
-    divElement.setAttribute("data-icon", `${icon.title}`);
+    divElement.setAttribute("data-icon", `${icon.background}`);
     divElement.className =
         icon.title === "Menu" ? "menu skip" : "icon-container";
 
@@ -110,28 +110,36 @@ const homeBtn = document.getElementById("homeBtn");
 console.log(homeBtn);
 
 function createFakeModule(icon) {
+    const topbar = document.querySelector(".top-bar");
     const moduleContainer = document.createElement("div");
     const childOne = document.createElement("div");
     const childTwo = document.createElement("div");
     const childOneImg = document.createElement("img");
+    const childTwoImg = document.createElement("img");
+
     childOne.className = "module-container__divOne";
     childOneImg.className = "module-container__divOne--img";
     childOneImg.src = "./images/close.png";
+
     childTwo.className = "module-container__divTwo";
-    childTwo.style.backgroundImage = `url(${icon.background})`;
+    childTwoImg.className = "module-container__divTwo--img";
+    childTwoImg.src = icon;
 
     moduleContainer.className = "module-container";
 
     homeBtnContainer.classList.add("button-bar--wht-background");
     homeBtn.classList.add("home-button--black-border");
+    topbar.style.backgroundColor = "white";
 
     childOne.addEventListener("click", () => {
         moduleContainer.remove();
         homeBtnContainer.classList.remove("button-bar--wht-background");
         homeBtn.classList.remove("home-button--black-border");
+        topbar.style.backgroundColor = "transparent";
     });
 
     childOne.appendChild(childOneImg);
+    childTwo.appendChild(childTwoImg);
 
     moduleContainer.appendChild(childOne);
     moduleContainer.appendChild(childTwo);
@@ -142,7 +150,7 @@ function createFakeModule(icon) {
 // open app when clicked
 
 const iconContainers = document.querySelectorAll("[data-icon]:not(.skip)");
-console.log(document.querySelectorAll("[data-icon][dataset]"));
+console.log(document.querySelectorAll("[data-icon]"));
 
 for (let i = 0; i < iconContainers.length; i++) {
     console.log(iconContainers[i]);
@@ -182,7 +190,6 @@ const openMenu = () => {
     document.querySelector(".upper-screen").style.display = "none";
     document.querySelector(".mid-screen").style.display = "none";
     document.querySelector(".lower-screen").style.display = "none";
-    //  document.getElementById("sc1").classList.add("add-blur"); //TODO onMenu click - unset blur
 };
 
 document.querySelector(".menu").addEventListener("click", () => {
@@ -205,6 +212,9 @@ const closeMenu = () => {
 const closeAllModules = () => {
     const parent = document.querySelector(".phone-frame");
     const menu = document.querySelector("#menu-container");
+    const topbar = document.querySelector(".top-bar");
+
+    topbar.style.backgroundColor = "transparent";
 
     if (menu) {
         closeMenu();
