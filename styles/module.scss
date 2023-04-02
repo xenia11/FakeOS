@@ -1,0 +1,56 @@
+$full-width: 100%;
+$display-flex: flex;
+
+.module-container {
+    display: $display-flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 60px;
+    left: 21px;
+    right: 18px;
+    bottom: 26px;
+    background-color: white;
+    padding-bottom: 8.5vh;
+    z-index: 9999;
+
+    &__divOne {
+        display: $display-flex;
+        justify-content: flex-end;
+        width: $full-width;
+        padding-right: 5%;
+        padding-top: 3%;
+
+        &--img {
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+        }
+    }
+
+    &__divTwo {
+        width: $full-width;
+        height: 100%;
+
+        &--img {
+            width: $full-width;
+            height: 95%;
+            margin-top: 2px;
+
+            //width: 100%;
+            //height: 95%;
+            // margin-top: 7px;
+        }
+    }
+
+    &--btn {
+        width: $full-width;
+        font-size: 18px;
+    }
+
+    &--para {
+        display: $display-flex;
+        justify-content: flex-start;
+        width: $full-width;
+    }
+}

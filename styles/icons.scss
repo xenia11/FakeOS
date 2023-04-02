@@ -1,0 +1,63 @@
+$white-background: white;
+$cursor-none: none;
+
+%grid-center-evenly-spaced {
+    display: grid;
+    justify-content: center;
+    align-content: space-evenly;
+}
+
+.icon-container {
+    @extend %grid-center-evenly-spaced;
+    filter: none;
+
+    cursor: pointer;
+
+    &__icon {
+        height: 52px;
+        width: 52px;
+
+        &--white-background {
+            background-color: $white-background;
+            border-radius: 37%;
+            padding: 5px;
+            height: 39px;
+            width: 39px;
+        }
+
+        &--small {
+            height: 22px;
+            width: 28px;
+            font-size: 18px;
+            margin-top: 0.8%;
+        }
+        &--smaller {
+            height: 21px;
+            width: 21px;
+            margin-top: 0.5%;
+            cursor: $cursor-none;
+        }
+        &--smallest {
+            height: 16px;
+            width: 16px;
+            margin-top: 1.5%;
+            cursor: $cursor-none;
+            margin-left: 3px;
+            margin-right: 10px;
+        }
+    }
+
+    &__text {
+        color: $white-background;
+        margin-top: 7%;
+    }
+}
+
+.menu {
+    @extend %grid-center-evenly-spaced;
+
+    &__icon {
+        height: 45px;
+        width: 45px;
+    }
+}

@@ -1,0 +1,13 @@
+@use "./breakpoints";
+
+@mixin xs {
+    @media only screen and (max-width: breakpoints.$mobile-width-xs) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media only screen and (min-width: (breakpoints.$mobile-width-xs+1px)) and (max-width: (breakpoints.$mobile-width-sm)) {
+        @content;
+    }
+}

@@ -1,0 +1,15 @@
+.menu-container {
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 55px;
+    left: 23px;
+    right: 21px;
+    bottom: 90px;
+    padding-bottom: 8.5vh;
+}
