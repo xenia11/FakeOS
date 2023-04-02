@@ -26,6 +26,10 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+.phone-container .phone-frame--white-background {
+  background-image: none !important;
+  background-color: white;
+}
 
 .icon-container {
   display: grid;
@@ -35,15 +39,15 @@ body {
   cursor: pointer;
 }
 .icon-container__icon {
-  height: 45px;
-  width: 45px;
+  height: 52px;
+  width: 52px;
 }
 .icon-container__icon--white-background {
   background-color: white;
-  border-radius: 27%;
-  padding: 2px;
-  height: 41px;
-  width: 41px;
+  border-radius: 37%;
+  padding: 5px;
+  height: 39px;
+  width: 39px;
 }
 .icon-container__icon--small {
   height: 22px;
@@ -106,9 +110,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.button-bar--wht-background {
-  background-color: white;
 }
 .button-bar .home-button {
   position: fixed;

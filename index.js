@@ -62,6 +62,12 @@ const iconsElement = midScreenApps.map((icon) => {
     imageElement.alt = `${icon.title}`;
     imageElement.className = "icon-container icon-container__icon";
 
+    const altName = imageElement.alt;
+
+    if (altName === "Gmail" || altName === "YouTube" || altName === "Slack") {
+        imageElement.classList.add("icon-container__icon--white-background");
+    }
+
     const pElement = document.createElement("p");
     pElement.className = "icon-container icon-container__text";
     pElement.textContent = icon.title;
@@ -82,13 +88,6 @@ const mainIcons = lowerScreenApps.map((icon) => {
     divElement.className =
         icon.title === "Menu" ? "menu skip" : "icon-container";
 
-    // divElement.onclick = "openMenu()";
-
-    // divElement.onclick =
-    //     icon.title === "Menu"
-    //         ? "openMenu()"
-    //         : `createFakeModule(${icon.title})`;
-
     const imageElement = document.createElement("img");
     imageElement.src = `${icon.image}`;
     imageElement.alt = `${icon.title}`;
@@ -96,6 +95,9 @@ const mainIcons = lowerScreenApps.map((icon) => {
         icon.title === "Menu"
             ? "menu menu__icon skip"
             : "icon-container icon-container__icon";
+
+    if (imageElement.alt === "Chrome")
+        imageElement.classList.add("icon-container__icon--white-background");
 
     divElement.appendChild(imageElement);
 
@@ -110,7 +112,7 @@ const homeBtn = document.getElementById("homeBtn");
 console.log(homeBtn);
 
 function createFakeModule(icon) {
-    const topbar = document.querySelector(".top-bar");
+    const phoneBackground = document.querySelector(".phone-frame");
     const moduleContainer = document.createElement("div");
     const childOne = document.createElement("div");
     const childTwo = document.createElement("div");
@@ -127,15 +129,14 @@ function createFakeModule(icon) {
 
     moduleContainer.className = "module-container";
 
-    homeBtnContainer.classList.add("button-bar--wht-background");
     homeBtn.classList.add("home-button--black-border");
-    topbar.style.backgroundColor = "white";
+    phoneBackground.classList.add("phone-frame--white-background");
 
     childOne.addEventListener("click", () => {
         moduleContainer.remove();
-        homeBtnContainer.classList.remove("button-bar--wht-background");
+
         homeBtn.classList.remove("home-button--black-border");
-        topbar.style.backgroundColor = "transparent";
+        phoneBackground.classList.remove("phone-frame--white-background");
     });
 
     childOne.appendChild(childOneImg);
@@ -158,21 +159,6 @@ for (let i = 0; i < iconContainers.length; i++) {
         createFakeModule(iconContainers[i].dataset.icon);
     });
 }
-
-// test.addEventListener("click", () => {
-//     createFakeModule(test.textContent);
-// });
-
-// iconContainers.forEach((icon) => {
-//     if (icon === undefined) {
-//         return "";
-//     }
-//     icon.addEventListener("click", () => {
-//         const iconData = icon.dataset.icon;
-//         console.log(iconData);
-//         createFakeModule(iconData);
-//     });
-// });
 
 //opens menu icon with all the apps
 
@@ -204,6 +190,7 @@ const closeMenu = () => {
     document.querySelector(".mid-screen").style.display = "grid";
     document.querySelector(".upper-screen").style.display = "flex";
     document.querySelector(".lower-screen").style.display = "grid";
+    console.log(parent.classList);
     parent.style.backgroundImage = "url(./images/background-photo.jpg)";
 };
 
@@ -213,6 +200,7 @@ const closeAllModules = () => {
     const parent = document.querySelector(".phone-frame");
     const menu = document.querySelector("#menu-container");
     const topbar = document.querySelector(".top-bar");
+    parent.classList.remove("phone-frame--white-background");
 
     topbar.style.backgroundColor = "transparent";
 

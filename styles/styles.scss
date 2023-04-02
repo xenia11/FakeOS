@@ -26,6 +26,11 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+
+        &--white-background {
+            background-image: none !important;
+            background-color: white;
+        }
     }
 }
 
@@ -38,15 +43,15 @@ body {
     cursor: pointer;
 
     &__icon {
-        height: 45px;
-        width: 45px;
+        height: 52px;
+        width: 52px;
 
         &--white-background {
             background-color: white;
-            border-radius: 27%;
-            padding: 2px;
-            height: 41px;
-            width: 41px;
+            border-radius: 37%;
+            padding: 5px;
+            height: 39px;
+            width: 39px;
         }
 
         &--small {
@@ -114,10 +119,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &--wht-background {
-        background-color: white;
-    }
 
     .home-button {
         position: fixed;
@@ -209,6 +210,10 @@ body {
             width: 100%;
             height: 95%;
             margin-top: 2px;
+
+            //width: 100%;
+            //height: 95%;
+            // margin-top: 7px;
         }
     }
 
@@ -242,8 +247,6 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     z-index: 99;
-    //   cursor: pointer;
-    //   display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
@@ -252,9 +255,8 @@ body {
     right: 21px;
     bottom: 90px;
     padding-bottom: 8.5vh;
-    //  color: transparent;
-    // background-image: url("./../images/background-photo.jpg");
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position: center center;
 }
+
+//when fake module opened screen bacground should be white not button and topbar bacground
+//check the width on other mobiles
+//add white background to icon that doesn't have any
