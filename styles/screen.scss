@@ -1,3 +1,5 @@
+@use "./mixins.scss";
+
 $white-color: white;
 
 %flex-center-display {
@@ -37,6 +39,12 @@ $white-color: white;
         top: 3%;
         height: 22px;
         width: 28px;
+
+        @include mixins.sm {
+            font-size: 17px;
+            left: 4%;
+            top: 0;
+        }
     }
 }
 
@@ -56,6 +64,33 @@ $white-color: white;
         border-radius: 10px;
         width: 15px;
         height: 15px;
+        // animation: pulse 1s ease-in-out;
+
+        // @keyframes pulse {
+        //     0% {
+        //         transform: scale(1);
+        //     }
+        //     50% {
+        //         transform: scale(1.2);
+        //     }
+        //     100% {
+        //         transform: scale(1);
+        //     }
+        // }
+        //         const pulseButton = document.querySelector('.pulse-button');
+
+        // pulseButton.addEventListener('click', () => {
+        //   pulseButton.classList.add('pulse');
+        //   setTimeout(() => pulseButton.classList.remove('pulse'), 1000);
+        // });
+
+        @include mixins.sm {
+            margin-top: 43px;
+            margin-bottom: 15px;
+            width: 22px;
+            height: 22px;
+            border-width: 3px;
+        }
 
         &--black-border {
             border-color: black;
@@ -76,13 +111,27 @@ $white-color: white;
         width: 100%;
         cursor: none;
         filter: blur(0) !important;
+
+        @include mixins.sm {
+            height: 100px;
+            align-items: center;
+        }
         &__weather {
             height: 116px;
             width: 116px;
+
+            @include mixins.sm {
+                height: 131px;
+                width: 131px;
+            }
         }
         &__degrees {
             font-size: 40px;
             color: $white-color;
+
+            @include mixins.sm {
+                font-size: 45px;
+            }
         }
     }
 
@@ -91,10 +140,19 @@ $white-color: white;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         align-items: center;
+
+        @include mixins.sm {
+            margin-top: 20px;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
     }
     .lower-screen {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
+
+        @include mixins.sm {
+            align-items: flex-end;
+        }
     }
 }
