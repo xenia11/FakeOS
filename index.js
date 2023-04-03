@@ -206,7 +206,6 @@ const closeMenu = () => {
     document.querySelector(".mid-screen").style.display = "grid";
     document.querySelector(".upper-screen").style.display = "flex";
     document.querySelector(".lower-screen").style.display = "grid";
-    console.log(parent.classList);
     parent.style.backgroundImage = "url(./images/background-photo.jpg)";
 };
 
