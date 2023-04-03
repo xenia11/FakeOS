@@ -55,6 +55,8 @@ const lowerScreenApps = [
     { image: "./images/menu.png", title: "Menu" },
 ];
 
+//create apps on middle screen
+
 const midScreen = document.querySelector(".mid-screen");
 
 const iconsElement = midScreenApps.map((icon) => {
@@ -84,6 +86,8 @@ const iconsElement = midScreenApps.map((icon) => {
 });
 
 midScreen.append(...iconsElement);
+
+//create main apps on lower screen
 
 const lowerScreen = document.querySelector(".lower-screen");
 
@@ -115,6 +119,8 @@ const homeBtnContainer = document.getElementsByClassName("button-bar")[0];
 console.log(homeBtnContainer);
 const homeBtn = document.getElementById("homeBtn");
 console.log(homeBtn);
+
+//create fake module when the app is clicked
 
 function createFakeModule(icon) {
     const phoneBackground = document.querySelector(".phone-frame");
@@ -153,7 +159,7 @@ function createFakeModule(icon) {
     document.querySelector(".phone-frame").appendChild(moduleContainer);
 }
 
-// open app when clicked
+// func that opens fake app when clicked
 
 const iconContainers = document.querySelectorAll("[data-icon]:not(.skip)");
 console.log(document.querySelectorAll("[data-icon]"));
@@ -186,6 +192,8 @@ const openMenu = () => {
 document.querySelector(".menu").addEventListener("click", () => {
     openMenu();
 });
+
+//close Menu app
 
 const closeMenu = () => {
     const parent = document.querySelector(".phone-frame");
@@ -224,6 +232,8 @@ const closeAllModules = () => {
 const closeButton = document.getElementById("homeBtn");
 closeButton.addEventListener("click", closeAllModules);
 
+//func that gets the current time
+
 const currentTime = () => {
     function addZero(i) {
         if (i < 10) {
@@ -241,6 +251,8 @@ const currentTime = () => {
 };
 
 currentTime();
+
+//func that checks is it a day or night and change the icon accordingly
 
 const dayOrNight = (hours) => {
     const currentHour = currentTime();
