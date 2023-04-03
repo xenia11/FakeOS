@@ -121,6 +121,18 @@
   border-radius: 10px;
   width: 15px;
   height: 15px;
+  animation: none;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 @media only screen and (min-width: 381px) and (max-width: 920px) {
   .button-bar .home-button {

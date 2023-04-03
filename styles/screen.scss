@@ -64,25 +64,19 @@ $white-color: white;
         border-radius: 10px;
         width: 15px;
         height: 15px;
-        // animation: pulse 1s ease-in-out;
+        animation: none;
 
-        // @keyframes pulse {
-        //     0% {
-        //         transform: scale(1);
-        //     }
-        //     50% {
-        //         transform: scale(1.2);
-        //     }
-        //     100% {
-        //         transform: scale(1);
-        //     }
-        // }
-        //         const pulseButton = document.querySelector('.pulse-button');
-
-        // pulseButton.addEventListener('click', () => {
-        //   pulseButton.classList.add('pulse');
-        //   setTimeout(() => pulseButton.classList.remove('pulse'), 1000);
-        // });
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
         @include mixins.sm {
             margin-top: 43px;

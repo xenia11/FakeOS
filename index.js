@@ -115,10 +115,15 @@ const mainIcons = lowerScreenApps.map((icon) => {
 
 lowerScreen.append(...mainIcons);
 
+//func that adds pulse animation to the button when clicked
+
 const homeBtnContainer = document.getElementsByClassName("button-bar")[0];
-console.log(homeBtnContainer);
+
 const homeBtn = document.getElementById("homeBtn");
-console.log(homeBtn);
+homeBtn.addEventListener("click", () => {
+    homeBtn.style.animation = "pulse 1s ease-in-out";
+    setTimeout(() => (homeBtn.style.animation = "none"), 1000);
+});
 
 //create fake module when the app is clicked
 
