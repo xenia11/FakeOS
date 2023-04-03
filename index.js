@@ -167,10 +167,8 @@ function createFakeModule(icon) {
 // func that opens fake app when clicked
 
 const iconContainers = document.querySelectorAll("[data-icon]:not(.skip)");
-console.log(document.querySelectorAll("[data-icon]"));
 
 for (let i = 0; i < iconContainers.length; i++) {
-    console.log(iconContainers[i]);
     iconContainers[i].addEventListener("click", () => {
         createFakeModule(iconContainers[i].dataset.icon);
     });
@@ -262,8 +260,6 @@ currentTime();
 const dayOrNight = (hours) => {
     const currentHour = currentTime();
     const dayNightImg = document.querySelector(".upper-screen__weather");
-
-    console.log(currentHour >= 20 || currentHour < 05);
 
     currentHour >= 20 || currentHour < 05
         ? (dayNightImg.src = "./images/nighttime.png")
