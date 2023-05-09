@@ -27,3 +27,5 @@ In order to ensure that the project is tested correctly, it is essential to adju
 - Reload the page to see the changes take effect.
 
 By following these steps, you should be able to properly test the project on a mobile device. If you encounter any issues or have questions, please refer to the project documentation 
+
+NB: Please adjust the responsiveness settings for the phone to test the app. https://xenia11.github.io/FakeOS/
